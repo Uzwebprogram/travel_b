@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { AppDataSource } from '../data-source';
-import { UslugyEntity} from '../entities/Uslugy';
+import { UslugyEntity} from '../entities/uslugy';
 
 class UslugyController {
     public async Get(req: Request, res: Response): Promise<void> {

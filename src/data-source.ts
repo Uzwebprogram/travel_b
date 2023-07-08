@@ -4,7 +4,7 @@ import { CategoryEntity } from "./entities/category"
 import { ProductsEntity } from "./entities/products"
 import { FormEntity } from "./entities/forma"
 import { BlogEntity } from "./entities/blog"
-import { UslugyEntity } from "./entities/Uslugy"
+import { UslugyEntity } from "./entities/uslugy"
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",

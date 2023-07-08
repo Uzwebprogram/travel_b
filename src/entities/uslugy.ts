@@ -1,6 +1,5 @@
 import { IsString } from "class-validator";
 import { Entity, PrimaryGeneratedColumn, Column,CreateDateColumn,UpdateDateColumn,OneToMany} from "typeorm";
-import { ProductsEntity } from "./products";
 
 
 @Entity({ name: "uslugy" })
