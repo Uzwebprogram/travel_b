@@ -1,0 +1,11 @@
+.ant-modal{
+    z-index: 99999999 !important;
+}
+.ant-modal-mask{
+    background-color: transparent !important;
+    z-index: 99999 !important;
+}
+.ant-modal-wrap{
+    z-index: 99999 !important;
+}
+

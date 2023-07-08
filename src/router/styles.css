@@ -1,0 +1,36 @@
+.wrappers{
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    background-color: #E3E3E3;
+    height: 100vh;
+}
+
+.headers{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23%;
+}
+
+.pages{
+    width: 77%;
+    padding: 10px;
+}
+
+.logo-wrap{
+    background-color: #E3E3E3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* .big_wrap{
+    height: 100vh;
+    padding: 10px;
+} */
+

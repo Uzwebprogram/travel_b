@@ -1,0 +1,15 @@
+.ant-card-body{
+    padding: 10px !important;
+}
+
+.card_wrapper{
+    width: 100%;
+    height: 380px;
+    overflow-y: auto;
+}
+.row{
+    margin: 0 !important;
+}
+.col{
+    margin-bottom: 20px;
+}
