@@ -43,6 +43,8 @@ export class ProductsEntity {
     @IsString()
     description2_en: string
 
+    @Column({ type: "text", nullable : true })
+    @IsString()
     image: string
 
     @CreateDateColumn({ type: "timestamp" })
