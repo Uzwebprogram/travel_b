@@ -21,9 +21,9 @@ class ProductsController {
 
     public async Post(req: Request, res: Response) {
         try {
-            const {title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image , category } = req.body
+            const {title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image, sale_count , category } = req.body
 
-            const products = await AppDataSource.getRepository(ProductsEntity ).createQueryBuilder().insert().into(ProductsEntity ).values({title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image , category }).returning("*").execute()
+            const products = await AppDataSource.getRepository(ProductsEntity ).createQueryBuilder().insert().into(ProductsEntity ).values({title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image, sale_count , category }).returning("*").execute()
 
             res.json({
                 status: 201,
@@ -38,11 +38,11 @@ class ProductsController {
 
     public async Put(req: Request, res: Response) {
         try {
-            const {title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image , category } = req.body
+            const {title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image, sale_count , category } = req.body
             const { id } = req.params
 
             const products = await AppDataSource.getRepository(ProductsEntity ).createQueryBuilder().update(ProductsEntity )
-                .set({title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image , category  })
+                .set({title_uz,title_ru,title_en , description_ru , description_en , description_uz ,description2_ru , description2_en , description2_uz , image, sale_count , category  })
                 .where({ id })
                 .returning("*")
                 .execute()

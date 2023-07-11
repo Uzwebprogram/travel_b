@@ -46,7 +46,9 @@ export class ProductsEntity {
     @Column({ type: "text", nullable : true })
     @IsString()
     image: string
-
+    @Column({ type: "text", nullable : true })
+    @IsString()
+    sale_count: string
     @CreateDateColumn({ type: "timestamp" })
     createdAt: Date;
 
