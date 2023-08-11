@@ -122,13 +122,33 @@ const VerticalSidebar = ({ children, setIsChecked }) => {
                             key: "3",
                             icon: <AppstoreOutlined />,
                             label: (
-                                <NavLink
-                                    to={"/category"}
-                                    className={pathname == "/category" ? "active" : ""}
-                                >
-                                    <span class="title">Каталог</span>
-                                </NavLink>
+                                    <span class="title">Категория</span>
+
                             ),
+                            children: [
+                                {
+                                  type: 'category',
+                                  label: (
+                                    <NavLink
+                                    to={"/category-aparat"}
+                                    className={pathname == "/category-aparat" ? "active" : ""}
+                                >
+                                    <span class="title">Апарат</span>
+                                </NavLink>
+                                  )
+                                },
+                                {
+                                    type: 'category',
+                                    label: (
+                                      <NavLink
+                                      to={"/category-pereparat"}
+                                      className={pathname == "/category-pereparat" ? "active" : ""}
+                                  >
+                                      <span class="title">препараты</span>
+                                  </NavLink>
+                                    )
+                                  }
+                                ]
                         },
                         {
                             key: "4",
@@ -154,18 +174,30 @@ const VerticalSidebar = ({ children, setIsChecked }) => {
                                 </NavLink>
                             ),
                         },
+                        {
+                            key: "6",
+                            icon: <ShoppingCartOutlined />,
+                            label: (
+                                <NavLink
+                                    to={"/blog"}
+                                    className={pathname == "/blog" ? "active" : ""}
+                                >
+                                    <span class="title">блог</span>
+                                </NavLink>
+                            ),
+                        },
                     ]}
-                    style={{ backgroundColor: "#1fab8a" }}
+                    style={{ backgroundColor: "#000B3E" }}
                 />
                 <div className="logo_wrapp">
-                    <img src={logo} alt="" />
+                    MARDTRAVEL
                 </div>
             </Sider>
             <Layout className="site-layout">
                 <Header
                     style={{
                         padding: 0,
-                        background: "#1fab8a",
+                        background: "#000B3E",
                         display: "flex",
                         justifyContent: "space-between",
                     }}
@@ -237,7 +269,7 @@ const VerticalSidebar = ({ children, setIsChecked }) => {
                         padding: "10px 20px"
                     }}
                 >
-                    ©2023 Created by Kamronbey
+                    ©2023 Created by Supersite
                 </Footer>
             </Layout>
         </Layout>

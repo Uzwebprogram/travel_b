@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
-
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 export const NewsPost = createAsyncThunk("news/post", async (body) => {
-  return await axios.post(`${API_URL}/news`, body).then((res) => res);
+  return await axios.post(`${API_URL}/news`, body , { headers:{ token : cookies.get("token")}}).then((res) => res);
 });
 export const NewsGet = createAsyncThunk("news/get", async () => {
   return await axios
@@ -13,14 +14,14 @@ export const NewsGet = createAsyncThunk("news/get", async () => {
 
 export const NewsDelete = createAsyncThunk("news/delete", async (id) => {
   return await axios
-    .delete(`${API_URL}/news/${id}`)
+    .delete(`${API_URL}/news/${id}` , { headers:{ token : cookies.get("token")}})
     .then((response) => response.data);
 });
 export const NewsPut = createAsyncThunk(
   "news/put",
   async ({ body, id }) => {
     return await axios
-      .put(`${API_URL}/news/${id}`, body)
+      .put(`${API_URL}/news/${id}`, body , { headers:{ token : cookies.get("token")}})
       .then((response) => console.log(response.data));
   }
 );
@@ -28,10 +29,10 @@ export const NewsPut = createAsyncThunk(
 export const UploadImage = createAsyncThunk("news/upload", async (e) => {
   const formData = new FormData();
   formData.append("file", e.target.files[0]);
-  formData.append("upload_preset", "dat87nly");
+  formData.append("upload_preset", "sguipenp");
   try {
     return await axios
-      .post("https://api.cloudinary.com/v1_1/dffclbjds/upload", formData)
+      .post("https://api.cloudinary.com/v1_1/deunojdib/upload", formData)
       .then((response) => response?.data.secure_url);
   } catch (error) {
     return error;

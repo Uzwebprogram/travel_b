@@ -1,21 +1,22 @@
 import { createAsyncThunk , createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
-
+import { API_URL } from "../../utils/api";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 export const adminAdd = createAsyncThunk('admin/Add' , async(body) =>{
-     return await axios.post("https://x8ki-letl-twmt.n7.xano.io/api:7Gs2Dnx1/auth/signup" , body)
+     return await axios.post(`${API_URL}/admins` , body ,  { headers:{ token : cookies.get("token")}})
     .then(res => res)
 })
 export const adminGet = createAsyncThunk("admin/Get" ,  () =>{
-    return axios.get("https://x8ki-letl-twmt.n7.xano.io/api:7Gs2Dnx1/user")
+    return axios.get(`${API_URL}/admins` , )
     .then(response => response.data)
 })
 export const adminPut = createAsyncThunk("admin/Delete", async ({body, id})=>{
-    return await axios.put(`https://x8ki-letl-twmt.n7.xano.io/api:1p9FGSWt/user/${id}`, body)
+    return await axios.put(`${API_URL}/admins/${id}`)
     .then(res => res)
 })
 export const adminDelete = createAsyncThunk("admin/Delete", async (id)=>{
-    return await axios.delete(`https://x8ki-letl-twmt.n7.xano.io/api:7Gs2Dnx1/user/${id}`)
+    return await axios.delete(`${API_URL}/admins/${id}` , { headers:{ token : cookies.get("token")}})
     .then(res => res)
 })
 const AdminSlice = createSlice({

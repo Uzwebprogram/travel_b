@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import HeaderTopCommon from "../../components/common/HeaderTop";
 import { WrapperContainer } from "../../style-App";
-import { NewsGet } from "../../redux/news/index";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import NewsComponent from "../../components/news";
-import Sidebar from "../../components/sidebar";
 import HorizontalSidebar from "../../components/horizontal-sidebar";
 import VerticalSidebar from "../../components/vertical-sidebar";
+import NewsComponent from "../../components/news";
+import { NewsGet } from "../../redux/news";
 function News() {
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -26,7 +24,7 @@ function News() {
     window.localStorage.getItem("checked") == 'false' ? <HorizontalSidebar>
       <WrapperContainer style={{ marginTop: "112px" }}>
         <HeaderTopCommon
-          title={"Новости"}
+          title={"новости"}
           onClick={showDrawer}
           textBtn={"Добавить новости"}
         />
@@ -35,7 +33,7 @@ function News() {
     </HorizontalSidebar> : <VerticalSidebar>
       <WrapperContainer>
         <HeaderTopCommon
-          title={"Новости"}
+          title={"новости"}
           onClick={showDrawer}
           textBtn={"Добавить новости"}
         />

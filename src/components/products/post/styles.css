@@ -20,7 +20,21 @@ h3 {
   line-height: 28px;
   color: #fff;
 }
-
+.textarea_products {
+  width: 95%;
+  font-family: "Ubuntu", sans-serif;
+  background: #ffffff;
+  border: 2px solid #eeeeee;
+  border-radius: 15px;
+  padding: 15px;
+  outline: none;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #aaaaaa;
+  resize: none;
+  margin-bottom: 20px;
+}
 .row {
   margin: 0 0 0 0 !important;
 }

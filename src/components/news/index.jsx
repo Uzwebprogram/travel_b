@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NewsDelete, NewsPut } from "../../redux/news/index";
 import Delete from "./delete";
-import NewsForm from "./post";
+import UslugyForm from "./post";
 import Put from "./put";
 import TableAdd from "./table";
 function NewsComponent({ open, handleClose }) {
@@ -34,7 +34,7 @@ function NewsComponent({ open, handleClose }) {
   };
   return (
     <>
-      <NewsForm Open={open} HandleClose={handleClose} />
+      <UslugyForm Open={open} HandleClose={handleClose} />
       <TableAdd onClickDelete={handleDeleteModal} HandleDelete={HandleDelete} onClickPut={handlePutModal} />
       <Delete
         // HandleDelete={HandleDelete}

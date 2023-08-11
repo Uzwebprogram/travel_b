@@ -33,8 +33,8 @@ function ProductsComponent({ open, handleClose }) {
     setProductId(e.currentTarget.id);
     setOpenPut(true);
   };
-  const HandleDelete = async () => {
-    await dispatch(ProductDelete(productId));
+  const HandleDelete = async (e) => {
+    await dispatch(ProductDelete(e.currentTarget.id));
     dispatch(ProductGet());
     setLoadings(true);
   };

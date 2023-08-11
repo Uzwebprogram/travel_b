@@ -14,8 +14,7 @@ export default function TableAdd({ HandleDelete }) {
     data.push({
       data: index + 1,
       key: elem.id,
-      Имя: elem.name,
-      Элпочта: elem.email,
+      Имя: elem.login,
       Удалить: (
         <Space wrap>
           <Popover
@@ -65,11 +64,6 @@ export default function TableAdd({ HandleDelete }) {
       title: "Имя",
       dataIndex: "Имя",
       key: "Имя",
-    },
-    {
-      title: "Эл. почта",
-      dataIndex: "Элпочта",
-      key: "Элпочта",
     },
     {
       title: "Удалить",

@@ -5,8 +5,11 @@ const AddAdmin = lazy(() => import("../pages/add_admin/index"));
 const Contact = lazy(() => import("../pages/contact/index"));
 const Category = lazy(() => import("../pages/category/index"));
 const Product = lazy(() => import("../pages/products/index"));
-const News = lazy(() => import("../pages/news/index"));
+const Blog = lazy(() => import("../pages/blog/index"));
+const News = lazy(() => import("../pages/news/index"))
 const Project = lazy(() => import("../pages/projects/index"))
+const Aparat = lazy(() => import("./../pages/aparat/index"))
+const Peraparat = lazy(() => import("./../pages/pereparat/index"))
 const cookie = new Cookies();
 
 
@@ -38,12 +41,28 @@ export const RouterData = [
   },
   {
     id: 6,
-    path: "/news",
-    component: cookie.get("token") ? <News /> : null,
+    path: "/blog",
+    component: cookie.get("token") ? <Blog /> : null,
   },
   {
     id: 6,
     path: "/project",
     component: cookie.get("token") ? <Project /> : null,
   },
+  {
+    id: 6,
+    path: "/news",
+    component: cookie.get("token") ? <News /> : null,
+  },
+  {
+    id: 6,
+    path: "/category-aparat",
+    component: cookie.get("token") ? <Aparat /> : null,
+  },
+  {
+    id: 6,
+    path: "/category-pereparat",
+    component: cookie.get("token") ? <Peraparat /> : null,
+  },
 ];
+

@@ -32,19 +32,6 @@ function Put({
   const [contentsUz, setContentsUz] = useState();
   const [contentsRu, setContentsRu] = useState();
   const [contentsEn, setContentsEn] = useState();
-  const [destinationUz, setDestinationUz] = useState();
-  const [destinationRu, setDestinationRu] = useState();
-  const [destinationEn, setDestinationEn] = useState();
-  const [colorUz, setColorUz] = useState();
-  const [colorRu, setColorRu] = useState();
-  const [colorEn, setColorEn] = useState();
-  const [mainFabricUz, setMainFabricUz] = useState();
-  const [mainFabricRu, setMainFabricRu] = useState();
-  const [mainFabricEn, setMainFabricEn] = useState();
-  const [compounds, setCompounds] = useState();
-  const [storageUz, setStorageUz] = useState();
-  const [storageRu, setStorageRu] = useState();
-  const [storageEn, setStorageEn] = useState();
 
   const productPut = useSelector((state) => state.product);
   // product get
@@ -53,7 +40,6 @@ function Put({
     dispatch(ProductGet());
   }, []);
   const filterData = productGets.filter(elem => elem.id == ids)
-  console.log(filterData)
   // product get
   // category get
   const categoryGets = useSelector((state) => state.category.categoryGet.data);
@@ -72,6 +58,7 @@ function Put({
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
   };
+  const FilterData = productGets.filter(elem =>  elem.id == ids)
 
   const options = [];
   categoryGets.map((elem) =>
@@ -84,34 +71,20 @@ function Put({
     setSelectId(e)
    
   }
-
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
       title_uz: titleUz,
       title_ru: titleRu,
       title_en: titleEn,
-      product_type_uz: productTypeUz,
-      product_type_ru: productTypeRu,
-      product_type_en: productTypeEn,
-      contents_uz: contentsUz,
-      contents_ru: contentsRu,
-      contents_en: contentsEn,
-      destination_uz: destinationUz,
-      destination_ru: destinationRu,
-      destination_en: destinationEn,
-      color_uz: colorUz,
-      color_ru: colorRu,
-      color_en: colorEn,
-      main_fabric_uz: mainFabricUz,
-      main_fabric_ru: mainFabricRu,
-      main_fabric_en: mainFabricEn,
-      Compound: compounds,
-      storage_uz: storageUz,
-      storage_ru: storageRu,
-      storage_en: storageEn,
-      category: selectId,
-      image: dataProject.data
+      description_uz: productTypeUz,
+      description_ru: productTypeRu,
+      description_en: productTypeEn,
+      description2_uz: contentsUz,
+      description2_ru: contentsRu,
+      description2_en: contentsEn,
+      image: !dataProject.data ? FilterData.map(elem => elem.image)[0] : dataProject.data ,
+      category : selectId
     };
 
     await dispatch(ProductPut({ body, id: ids }));
@@ -123,7 +96,6 @@ function Put({
     setLoadings(true);
     window.location.reload();
   };
-
   const antIcon = (
     <LoadingOutlined
       style={{
@@ -214,173 +186,84 @@ function Put({
                           <InputCommon
                             type="text"
                             defaultValue={elem.title_uz}
+                            placeholder="uz"
                             onChange={(e) => setTitleUz(e.currentTarget.value)}
                           />
                           <InputCommon
                             type="text"
                             defaultValue={elem.title_ru}
+                            placeholder="ru"
                             onChange={(e) => setTitleRU(e.currentTarget.value)}
                           />
                           <InputCommon
                             type="text"
                             defaultValue={elem.title_en}
+                            placeholder="en"
                             onChange={(e) => setTitleEn(e.currentTarget.value)}
                           />
 
-                          <Row>
-                            <Col className="col" lg={12}>
-                              <h4>Вид изделия</h4>
-                              <InputCommon
-                                type="text"
-                                defaultValue={elem.product_type_uz}
-                                onChange={(e) => setProductTypeUz(e.currentTarget.value)}
-                              />
-                            </Col>
-                            <Col className="col" lg={12}>
-                              <InputCommon
-                                type="text"
-                                defaultValue={elem.product_type_ru}
-                                onChange={(e) => setProductTypeRu(e.currentTarget.value)}
-                              />
-                            </Col>
-                            <Col className="col" lg={12}>
-                              <InputCommon
-                                type="text"
-                                defaultValue={elem.product_type_en}
-                                onChange={(e) => setProductTypeEn(e.currentTarget.value)}
-                              />
-                            </Col>
-                          </Row>
+<Row>
+                    <Col className="col" lg={12}>
+                      <h4>описание</h4>
+                  <textarea className="textarea_products" 
+                        defaultValue={elem.description_uz}
+                        placeholder="узбекский"
+                        required
+                        onChange={(e) => setProductTypeUz(e.currentTarget.value)}
+                    rows="10" cols="120">
+                  </textarea>
+                    </Col>
+                    <Col className="col" lg={12}>
+                       <textarea className="textarea_products" 
+                        defaultValue={elem.description_ru}
+                        placeholder="русский"
+                        required
+                        onChange={(e) => setProductTypeRu(e.currentTarget.value)}
+                    rows="10" cols="120">
+                  </textarea>
+                    </Col>
+                    <Col className="col" lg={12}>
+                  <textarea className="textarea_products" 
+                        defaultValue={elem.description_en}
+                        placeholder="английский"
+                        required
+                        onChange={(e) => setProductTypeEn(e.currentTarget.value)}
+                    rows="10" cols="120">
+                  </textarea>
+                    </Col>
+                  </Row>
                         </Col>
 
                         <Col className="col" lg={4}>
-                          <h4>Комплектность</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.contents_uz}
-                            onChange={(e) => setContentsUz(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.contents_ru}
-                            onChange={(e) => setContentsRu(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.contents_en}
-                            onChange={(e) => setContentsEn(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>Назначение</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.destination_uz}
-                            onChange={(e) => setDestinationUz(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.destination_ru}
-                            onChange={(e) => setDestinationRu(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.destination_en}
-                            onChange={(e) => setDestinationEn(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>Цвет</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.color_uz}
-                            onChange={(e) => setColorUz(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.color_ru}
-                            onChange={(e) => setColorRu(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.color_en}
-                            onChange={(e) => setColorEn(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>Основная ткань</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.main_fabric_uz}
-                            onChange={(e) => setMainFabricUz(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.main_fabric_ru}
-                            onChange={(e) => setMainFabricRu(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.main_fabric_en}
-                            onChange={(e) => setMainFabricEn(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={12}>
-                          <h4>Состав</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.Compound}
-                            onChange={(e) => setCompounds(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>Гарантийный срок</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.storage_uz}
-                            onChange={(e) => setStorageUz(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.storage_ru}
-                            onChange={(e) => setStorageRu(e.currentTarget.value)}
-                          />
-                        </Col>
-                        <Col className="col" lg={4}>
-                          <h4>*</h4>
-                          <InputCommon
-                            type="text"
-                            defaultValue={elem.storage_en}
-                            onChange={(e) => setStorageEn(e.currentTarget.value)}
-                          />
-                        </Col>
+                  <h4>описание 2</h4>
+                  <textarea className="textarea_products" 
+                    placeholder="узбекский"
+                    defaultValue={elem.description2_uz}
+                    required
+                    onChange={(e) => setContentsUz(e.currentTarget.value)}
+                    rows="10" cols="120">
+                  </textarea>
+                </Col>
+                <Col className="col" lg={4}>
+                  <h4>*</h4>
+                  <textarea className="textarea_products" 
+                    placeholder="русский"
+                    defaultValue={elem.description2_ru}
+                    required
+                    onChange={(e) => setContentsRu(e.currentTarget.value)}
+                    rows="10" cols="120">
+                  </textarea>
+                </Col>
+                <Col className="col" lg={4}>
+                  <h4>*</h4>
+                    <textarea className="textarea_products" 
+                    placeholder="английский"
+                    defaultValue={elem.description2_en}
+                    required
+                    onChange={(e) => setContentsEn(e.currentTarget.value)}
+                    rows="10" cols="120">
+                  </textarea>
+                </Col>
                       </Row>
                     </>
                   ) : null

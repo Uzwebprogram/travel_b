@@ -130,7 +130,7 @@ const Sidebar = ({ children }) => {
     //               to={"/news"}
     //               className={pathname == "/news" ? "active" : ""}
     //             >
-    //               <span class="title">Новости</span>
+    //               <span class="title">блог</span>
     //             </NavLink>
     //           ),
     //         },

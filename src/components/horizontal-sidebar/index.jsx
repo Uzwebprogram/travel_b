@@ -117,16 +117,35 @@ const HorizontalSidebar = ({ children, setIsChecked }) => {
             },
             {
               key: "3",
-              icon: <AppstoreOutlined />,
               label: (
-                <NavLink
-                  to={"/category"}
-                  className={pathname == "/category" ? "active" : ""}
-                >
-                  <span class="title">Каталог</span>
-                </NavLink>
+                      <span class="title">Категория</span>
+
               ),
-            },
+              children: [
+                  {
+                    type: 'category',
+                    label: (
+                      <NavLink
+                      to={"/category-aparat"}
+                      className={pathname == "/category-aparat" ? "active" : ""}
+                  >
+                      <span class="title">Апарат</span>
+                  </NavLink>
+                    )
+                  },
+                  {
+                      type: 'category',
+                      label: (
+                        <NavLink
+                        to={"/category-pereparat"}
+                        className={pathname == "/category-pereparat" ? "active" : ""}
+                    >
+                        <span class="title">препараты</span>
+                    </NavLink>
+                      )
+                    }
+                  ]
+          },
             {
               key: "4",
               icon: <ShoppingCartOutlined />,
@@ -147,10 +166,22 @@ const HorizontalSidebar = ({ children, setIsChecked }) => {
                   to={"/news"}
                   className={pathname == "/news" ? "active" : ""}
                 >
-                  <span class="title">Новости</span>
+                  <span class="title">новости</span>
                 </NavLink>
               ),
-            }
+            },
+            {
+              key: "6",
+              icon: <ShoppingCartOutlined />,
+              label: (
+                  <NavLink
+                      to={"/blog"}
+                      className={pathname == "/blog" ? "active" : ""}
+                  >
+                      <span class="title">Блог</span>
+                  </NavLink>
+              ),
+          }
           ]}
         />
         <div className="profile">
@@ -213,7 +244,7 @@ const HorizontalSidebar = ({ children, setIsChecked }) => {
           padding: '15px 50px'
         }}
       >
-        ©2023 Created by Kamronbey
+        ©2023 Created by Supersite
       </Footer>
     </Layout>
   );

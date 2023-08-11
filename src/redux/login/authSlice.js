@@ -1,6 +1,7 @@
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios"
 import Cookies from "universal-cookie";
+import {API_URL} from "./../../utils/api"
     const cookies = new Cookies();
 let initialState = {
     verifyCodeSuccess : "",
@@ -9,9 +10,9 @@ let initialState = {
     loading : false
 }
 export let adminAuth = createAsyncThunk('admin' , async(body) => {
-    const res = await axios.post("https://x8ki-letl-twmt.n7.xano.io/api:7Gs2Dnx1/auth/login" , body)
+    const res = await axios.post(`${API_URL}/signin` , body)
     return {
-        verifyCodeSuccess : res.data?.authToken
+        verifyCodeSuccess : res
     }
 })
 let authSlice = createSlice({
@@ -29,7 +30,7 @@ let authSlice = createSlice({
         [adminAuth.fulfilled]:(state , action) =>{
             state.loading = false;
             state.Success = true
-            state.verifyCodeSuccess = cookies.set("token", action.payload.verifyCodeSuccess)
+            state.verifyCodeSuccess = cookies.set("token" , action.payload.verifyCodeSuccess.data.token)
         },       
          [adminAuth.rejected]:(state , action) =>{
             state.loading = true

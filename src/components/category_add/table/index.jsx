@@ -14,12 +14,6 @@ export default function TableAdd({ HandleDelete, onClickPut }) {
   rows.map((elem, index) => {
     data.push({
       data: index + 1,
-      Фото: <Image
-        width="100px"
-        height="100%"
-        style={{ aspectRatio: "16 / 9", borderRadius: "20px" }}
-        src={elem.image}
-      />,
       key: elem.id,
       Имякатегорииузб: elem.title_uz,
       Имякатегориирусский: elem.title_ru,
@@ -35,18 +29,15 @@ export default function TableAdd({ HandleDelete, onClickPut }) {
 
           <Space wrap>
             <Popover
-              trigger="click"
               placement="rightBottom"
               content={
                 <div className="content_delete_box">
                   <p>Вы уверены, что хотите удалить эту категория?</p>
-                  <p>При удалений категорий вся информация принадлежащая <br /> данной категории будут удалены безвозратно</p>
+                  <p>Чтобы удалить категорию, необходимо удалить <br /> связанные с ней товары!</p>
                   <div className="btn_wrap_delete">
-                    <button className="no_btn">
-                      Нет
-                    </button>
+  
                     <button onClick={HandleDelete} id={elem.id} className="yes_btn">
-                      да
+                      удалить
                     </button>
                   </div>
                 </div>
@@ -79,12 +70,7 @@ export default function TableAdd({ HandleDelete, onClickPut }) {
       width: 50,
       align: "center",
     },
-    {
-      title: "Фото",
-      dataIndex: "Фото",
-      key: "Фото",
-      align: "center",
-    },
+
     {
       title: "Имя категории узб",
       dataIndex: "Имякатегорииузб",

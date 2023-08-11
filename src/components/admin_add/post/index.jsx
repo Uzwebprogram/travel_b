@@ -18,10 +18,9 @@ function AdminAddForm({ Open, HandleClose }) {
   const addAdmin = useSelector((state) => state.adminadd);
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    const email = emails;
     const password = passwords;
-    const name = names;
-    await dispatch(adminAdd({ email, password, name }));
+    const login = names;
+    await dispatch(adminAdd({ login ,  password }));
     dispatch(adminGet());
     HandleClose();
   };
@@ -42,14 +41,6 @@ function AdminAddForm({ Open, HandleClose }) {
                     placeholder="имя"
                     required
                     onChange={(e) => setNames(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={12}>
-                  <InputCommon
-                    type="email"
-                    placeholder="эл. почта.."
-                    required
-                    onChange={(e) => setEmails(e.currentTarget.value)}
                   />
                 </Col>
                 <Col className="col" lg={12}>

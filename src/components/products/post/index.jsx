@@ -25,19 +25,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
   const [contentsUz, setContentsUz] = useState();
   const [contentsRu, setContentsRu] = useState();
   const [contentsEn, setContentsEn] = useState();
-  const [destinationUz, setDestinationUz] = useState();
-  const [destinationRu, setDestinationRu] = useState();
-  const [destinationEn, setDestinationEn] = useState();
-  const [colorUz, setColorUz] = useState();
-  const [colorRu, setColorRu] = useState();
-  const [colorEn, setColorEn] = useState();
-  const [mainFabricUz, setMainFabricUz] = useState();
-  const [mainFabricRu, setMainFabricRu] = useState();
-  const [mainFabricEn, setMainFabricEn] = useState();
-  const [compounds, setCompounds] = useState();
-  const [storageUz, setStorageUz] = useState();
-  const [storageRu, setStorageRu] = useState();
-  const [storageEn, setStorageEn] = useState();
+  const [salecount, setsalecount] = useState();
 
 
 
@@ -73,29 +61,17 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
       title_uz: titleUz,
       title_ru: titleRu,
       title_en: titleEn,
-      product_type_uz: productTypeUz,
-      product_type_ru: productTypeRu,
-      product_type_en: productTypeEn,
-      contents_uz: contentsUz,
-      contents_ru: contentsRu,
-      contents_en: contentsEn,
-      destination_uz: destinationUz,
-      destination_ru: destinationRu,
-      destination_en: destinationEn,
-      color_uz: colorUz,
-      color_ru: colorRu,
-      color_en: colorEn,
-      main_fabric_uz: mainFabricUz,
-      main_fabric_ru: mainFabricRu,
-      main_fabric_en: mainFabricEn,
-      Compound: compounds,
-      storage_uz: storageUz,
-      storage_ru: storageRu,
-      storage_en: storageEn,
-      category: selectId,
-      image: dataProject.data
+      description_uz: productTypeUz,
+      description_ru: productTypeRu,
+      description_en: productTypeEn,
+      description2_uz: contentsUz,
+      description2_ru: contentsRu,
+      description2_en: contentsEn,
+      image: dataProject.data,
+      category : selectId,
+      sale_count : salecount
     };
-
+    console.log(body);
     await dispatch(ProductPost(body));
     dispatch(ProductGet());
     HandleClose();
@@ -196,7 +172,7 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
                     type="text"
                     placeholder="русский"
                     required
-                    onChange={(e) => setTitleEn(e.currentTarget.value)}
+                    onChange={(e) => setTitleRU(e.currentTarget.value)}
                   />
                   <InputCommon
                     type="text"
@@ -207,177 +183,66 @@ function ProductAddForm({ Open, HandleClose, setSelectId, selectId }) {
 
                   <Row>
                     <Col className="col" lg={12}>
-                      <h4>Вид изделия</h4>
-                      <InputCommon
-                        type="text"
+                      <h4>описание</h4>
+                  <textarea className="textarea_products" 
                         placeholder="узбекский"
                         required
                         onChange={(e) => setProductTypeUz(e.currentTarget.value)}
-                      />
+                    rows="10" cols="120">
+                  </textarea>
                     </Col>
                     <Col className="col" lg={12}>
-                      <InputCommon
-                        type="text"
+                       <textarea className="textarea_products" 
                         placeholder="русский"
                         required
                         onChange={(e) => setProductTypeRu(e.currentTarget.value)}
-                      />
+                    rows="10" cols="120">
+                  </textarea>
                     </Col>
                     <Col className="col" lg={12}>
-                      <InputCommon
-                        type="text"
+                  <textarea className="textarea_products" 
                         placeholder="английский"
                         required
                         onChange={(e) => setProductTypeEn(e.currentTarget.value)}
-                      />
+                    rows="10" cols="120">
+                  </textarea>
                     </Col>
                   </Row>
                 </Col>
 
                 <Col className="col" lg={4}>
-                  <h4>Комплектность</h4>
-                  <InputCommon
-                    type="text"
+                  <h4>описание 2</h4>
+                  <textarea className="textarea_products" 
                     placeholder="узбекский"
                     required
                     onChange={(e) => setContentsUz(e.currentTarget.value)}
-                  />
+                    rows="10" cols="120">
+                  </textarea>
                 </Col>
                 <Col className="col" lg={4}>
                   <h4>*</h4>
-                  <InputCommon
-                    type="text"
+                  <textarea className="textarea_products" 
                     placeholder="русский"
                     required
                     onChange={(e) => setContentsRu(e.currentTarget.value)}
-                  />
+                    rows="10" cols="120">
+                  </textarea>
                 </Col>
                 <Col className="col" lg={4}>
                   <h4>*</h4>
-                  <InputCommon
-                    type="text"
+                    <textarea className="textarea_products" 
                     placeholder="английский"
                     required
                     onChange={(e) => setContentsEn(e.currentTarget.value)}
-                  />
+                    rows="10" cols="120">
+                  </textarea>
                 </Col>
-                <Col className="col" lg={4}>
-                  <h4>Назначение</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="узбекский"
+                <InputCommon
+                    type="number"
+                    placeholder="процент скидки"
                     required
-                    onChange={(e) => setDestinationUz(e.currentTarget.value)}
+                    onChange={(e) => setsalecount(e.currentTarget.value)}
                   />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="русский"
-                    required
-                    onChange={(e) => setDestinationRu(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="английский"
-                    required
-                    onChange={(e) => setDestinationEn(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>Цвет</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="узбекский"
-                    required
-                    onChange={(e) => setColorUz(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="русский"
-                    required
-                    onChange={(e) => setColorRu(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="английский"
-                    required
-                    onChange={(e) => setColorEn(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>Основная ткань</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="узбекский"
-                    required
-                    onChange={(e) => setMainFabricUz(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="русский"
-                    required
-                    onChange={(e) => setMainFabricRu(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="английский"
-                    required
-                    onChange={(e) => setMainFabricEn(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={12}>
-                  <h4>Состав</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="печатание..."
-                    required
-                    onChange={(e) => setCompounds(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>Гарантийный срок</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="узбекский"
-                    required
-                    onChange={(e) => setStorageUz(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="русский"
-                    required
-                    onChange={(e) => setStorageRu(e.currentTarget.value)}
-                  />
-                </Col>
-                <Col className="col" lg={4}>
-                  <h4>*</h4>
-                  <InputCommon
-                    type="text"
-                    placeholder="английский"
-                    required
-                    onChange={(e) => setStorageEn(e.currentTarget.value)}
-                  />
-                </Col>
               </Row>
               <CommonBtn
                 type="submit"

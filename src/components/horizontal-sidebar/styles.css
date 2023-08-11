@@ -5,7 +5,7 @@
   height: auto !important;
   width: auto !important;
   margin: 10px 16px 0 16px !important;
-  background-color: #3045A5!important;
+  background-color: #000B3E!important;
   position: fixed !important;
   right: 0;
   left: 0;
@@ -15,7 +15,7 @@
 }
 
 .hori_sidebar .ant-menu {
-  background-color: #3045A5 !important;
+  background-color: #000B3E !important;
 }
 
 .hori_sidebar .ant-menu .ant-menu-item {

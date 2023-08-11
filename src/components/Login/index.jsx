@@ -11,6 +11,7 @@ import "./styles.css";
 import CommonButton from "../../components/common/button/index";
 import logo from "../../assets/image/logos.png";
 import InputCommon from "../common/input";
+import Cookies from "universal-cookie";
 
 const LoginComponent = () => {
   const [passwordRef, setPasswordRef] = useState();
@@ -18,17 +19,21 @@ const LoginComponent = () => {
   const dispatch = useDispatch();
   const admin = useSelector((state) => state);
   const navigate = useNavigate();
+  const cookies = new Cookies()
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    const email = emailRef;
+    const login = emailRef;
     const password = passwordRef;
-    window.localStorage.setItem('emails', email)
-    await dispatch(adminAuth({ email, password }));
+    window.localStorage.setItem('emails', login)
+    await dispatch(adminAuth({ login , password }));
     dispatch(GetProjects());
   };
   if (admin.admin?.Success == true) {
     navigate("/adminadd");
     window.location.reload();
+  }
+  if (cookies.get("token")) {
+    window.location.href = "/adminadd"
   }
   return (
     <>
@@ -48,10 +53,10 @@ const LoginComponent = () => {
                 </div>
                 <form onSubmit={HandleSubmit}>
                   <div className="user-box">
-                    <label htmlFor="email">Эл. почта</label>
+                    <label htmlFor="name">имя</label>
                     <InputCommon
-                      placeholder="example@gmail.com"
-                      type="email"
+                      placeholder="имя"
+                      type="text"
                       required
                       onChange={(e) => setEmailRef(e.currentTarget.value)}
                     />

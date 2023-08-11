@@ -9,7 +9,16 @@
 .trigger:hover {
   color: #fff;
 }
-
+.ant-menu-submenu-title{
+  margin: 0 !important;
+  padding: 13px !important;
+}
+ .ant-menu-submenu-inline{
+  margin-bottom: 10px !important;
+}
+.ant-menu .ant-menu-sub {
+  background-color: #000B3E !important;
+}
 .anticon {
   font-size: 22px !important;
   color: #fff;
@@ -76,7 +85,7 @@
   width: 164px;
 }
 .ant-menu-item .ant-menu-item-selected {
-  background: #03544c !important;
+  background: #2238a7 !important;
 }
 .site-layout {
   background-color: #eeeff5;
@@ -89,7 +98,7 @@
   } */
 
 .ant-menu-item-selected {
-  background-color: #03544c !important;
+  background-color: #2238a7 !important;
   color: #fff !important;
   border-radius: 15px !important;
 }
@@ -266,7 +275,7 @@ a {
 }
 
 .ant-layout-sider-children {
-  background: #fff  !important;
+  background: #000B3E  !important;
   border-radius: 20px;
 }
 
