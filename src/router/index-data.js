@@ -10,6 +10,7 @@ const News = lazy(() => import("../pages/news/index"))
 const Project = lazy(() => import("../pages/projects/index"))
 const Aparat = lazy(() => import("./../pages/aparat/index"))
 const Peraparat = lazy(() => import("./../pages/pereparat/index"))
+const AparatProduct = lazy(() => import("./../pages/product-aparat/index"))
 const cookie = new Cookies();
 
 
@@ -63,6 +64,11 @@ export const RouterData = [
     id: 6,
     path: "/category-pereparat",
     component: cookie.get("token") ? <Peraparat /> : null,
+  },
+  {
+    id: 6,
+    path: "/aparat-product",
+    component: cookie.get("token") ? <AparatProduct /> : null,
   },
 ];
 

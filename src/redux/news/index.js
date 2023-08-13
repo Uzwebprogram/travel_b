@@ -29,10 +29,10 @@ export const NewsPut = createAsyncThunk(
 export const UploadImage = createAsyncThunk("news/upload", async (e) => {
   const formData = new FormData();
   formData.append("file", e.target.files[0]);
-  formData.append("upload_preset", "sguipenp");
+  formData.append("upload_preset", "v0khd47o");
   try {
     return await axios
-      .post("https://api.cloudinary.com/v1_1/deunojdib/upload", formData)
+      .post("https://api.cloudinary.com/v1_1/dsdkp3672/upload", formData)
       .then((response) => response?.data.secure_url);
   } catch (error) {
     return error;

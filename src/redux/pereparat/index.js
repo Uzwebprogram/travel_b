@@ -29,7 +29,7 @@ export const PereparatPut = createAsyncThunk(
 export const UploadImage = createAsyncThunk("Pereparat/upload", async (e) => {
   const formData = new FormData();
   formData.append("file", e.target.files[0]);
-  formData.append("upload_preset", "sguipenp");
+  formData.append("upload_preset", "v0khd47o");
   try {
     return await axios
       .post("https://api.cloudinary.com/v1_1/deunojdib/upload", formData)

@@ -3,10 +3,10 @@ import { Input } from "antd";
 import './styles.css'
 
 
-const InputCommon = ({placeholder, defaultValue, type, onChange}) => {
+const InputCommon = ({placeholder, defaultValue, type, onChange, className}) => {
     return (
         <>
-            <Input defaultValue={defaultValue} placeholder={placeholder} type={type} onChange={onChange} />
+            <Input className={className} defaultValue={defaultValue} placeholder={placeholder} type={type} onChange={onChange} />
         </>
     )
 }

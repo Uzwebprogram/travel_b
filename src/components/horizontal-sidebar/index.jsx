@@ -148,15 +148,33 @@ const HorizontalSidebar = ({ children, setIsChecked }) => {
           },
             {
               key: "4",
-              icon: <ShoppingCartOutlined />,
               label: (
-                <NavLink
-                  to={"/product"}
-                  className={pathname == "/product" ? "active" : ""}
-                >
                   <span class="title">Продукт</span>
-                </NavLink>
               ),
+              children: [
+                {
+                  type: 'category',
+                  label: (
+                    <NavLink
+                    to={"/aparat-product"}
+                    className={pathname == "/aparat-product" ? "active" : ""}
+                >
+                    <span class="title">Апарат</span>
+                </NavLink>
+                  )
+                },
+                {
+                    type: 'category',
+                    label: (
+                      <NavLink
+                      to={"/pereparat-product"}
+                      className={pathname == "/pereparat-product" ? "active" : ""}
+                  >
+                      <span class="title">препараты</span>
+                  </NavLink>
+                    )
+                  }
+                ]
             },
             {
               key: "5",
