@@ -3,6 +3,7 @@ import form from "../controller/form";
 import category from "../controller/category";
 import products from "../controller/products";
 import blog from "../controller/blog";
+import formPay from "../controller/form-pay";
 import uslugy from "../controller/uslugy"
 const router=Router()
 
@@ -12,6 +13,12 @@ router.get("/form/:id",form.GetId);
 router.post("/form",form.Post);
 router.put("/form/:id",form.Put);
 router.delete("/form/:id",form.Delete);
+// form
+router.get("/formpay",formPay.Get);
+router.get("/formpay/:id",formPay.GetId);
+router.post("/formpay",formPay.Post);
+router.put("/formpay/:id",formPay.Put);
+router.delete("/formpay/:id",formPay.Delete);
 // uslugy
 router.get("/uslugy",uslugy.Get);
 router.get("/uslugy/:id",uslugy.GetId);
