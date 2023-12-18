@@ -5,6 +5,7 @@ import { ProductsEntity } from "./entities/products"
 import { FormEntity } from "./entities/forma"
 import { BlogEntity } from "./entities/blog"
 import { UslugyEntity } from "./entities/uslugy"
+import { FormPayEntity } from "./entities/form-pay"
 export const AppDataSource = new DataSource({
     type: "postgres",
     host: "localhost",
@@ -14,7 +15,7 @@ export const AppDataSource = new DataSource({
     database: "travel_b", 
     synchronize: true,
     logging: false,
-    entities: [CategoryEntity , ProductsEntity , FormEntity , BlogEntity, UslugyEntity],
+    entities: [CategoryEntity , ProductsEntity , FormEntity , BlogEntity, UslugyEntity , FormPayEntity],
     migrations: [],
     subscribers: [],
 })
